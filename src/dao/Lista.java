@@ -27,4 +27,21 @@ public class Lista {
             p=p.getSig();
         }
     }
+    public void eliminarFinal(){
+        if(raiz==null){
+            System.out.println("La lista está vacia, no hay nada que eliminar");
+        }else if(raiz.getSig()==null){
+            raiz=null;
+            ultimo=null;
+            System.out.println("El ultimo nodo ha sido eliminado, la lista ahora esta vacia");
+        }else{
+            Nodo actual=raiz;
+            while(actual.getSig().getSig()!=null){
+                actual=actual.getSig();
+            }
+            actual.setSig(null);
+            ultimo=actual;
+            System.out.println("El ultimo nodo ha sido eliminado");
+        }
+    }
 }

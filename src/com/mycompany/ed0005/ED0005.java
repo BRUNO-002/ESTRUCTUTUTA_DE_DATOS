@@ -13,6 +13,6 @@ class ED0005 {
         l.agregar(new Nodo(7, null));
         l.agregar(new Nodo(9, null));
         l.leer();
-        //OEEE WAAAA
+        //OEEE WAAAAAA
     }
 }

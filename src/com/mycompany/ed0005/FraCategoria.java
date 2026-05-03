@@ -21,6 +21,9 @@ public class FraCategoria extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnMostrr = new javax.swing.JButton();
+        btnOrdenarBurbuja = new javax.swing.JButton();
+        btnInsertarAlInicio = new javax.swing.JButton();
+        btnFinal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,26 +52,57 @@ public class FraCategoria extends javax.swing.JFrame {
             }
         });
 
+        btnOrdenarBurbuja.setText("Ordenar Burbuja");
+        btnOrdenarBurbuja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarBurbujaActionPerformed(evt);
+            }
+        });
+
+        btnInsertarAlInicio.setText("Insertar al inicio");
+        btnInsertarAlInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarAlInicioActionPerformed(evt);
+            }
+        });
+
+        btnFinal.setText("Final");
+        btnFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCodigo)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(btnAgregar)
-                .addGap(74, 74, 74)
-                .addComponent(btnMostrr)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInsertarAlInicio)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(btnAgregar)))
+                        .addGap(53, 53, 53)
+                        .addComponent(btnOrdenarBurbuja)
+                        .addContainerGap(91, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                            .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnMostrr)
+                                .addGap(44, 44, 44)
+                                .addComponent(btnFinal))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtCodigo)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,9 +120,14 @@ public class FraCategoria extends javax.swing.JFrame {
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOrdenarBurbuja)
+                    .addComponent(btnInsertarAlInicio))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnMostrr))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addComponent(btnMostrr)
+                    .addComponent(btnFinal))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,6 +152,29 @@ public class FraCategoria extends javax.swing.JFrame {
         txtNombre.setText("");
         txtCodigo.requestFocus();
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnOrdenarBurbujaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarBurbujaActionPerformed
+        cateDAO.ordenarPorCodigo();
+        JOptionPane.showMessageDialog(rootPane, "La lista ha sido ordenada por codigo--Presione mostrar para ver el resultado");
+    }//GEN-LAST:event_btnOrdenarBurbujaActionPerformed
+
+    private void btnInsertarAlInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarAlInicioActionPerformed
+        Categoria cate=new Categoria();
+        cate.setCodiCate(Integer.parseInt(txtCodigo.getText()));
+        cate.setNombreCate(txtNombre.getText());
+        cate.setSig(null);
+        
+        cateDAO.agregarAlInicio(cate);
+        JOptionPane.showMessageDialog(rootPane,"Se agregó al inicio correctamente");
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtCodigo.requestFocus();
+    }//GEN-LAST:event_btnInsertarAlInicioActionPerformed
+
+    private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
+        System.exit(0);
+        JOptionPane.showMessageDialog(rootPane,"Gracias por usar mi programa :))");
+    }//GEN-LAST:event_btnFinalActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -148,7 +210,10 @@ public class FraCategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnFinal;
+    private javax.swing.JButton btnInsertarAlInicio;
     private javax.swing.JButton btnMostrr;
+    private javax.swing.JButton btnOrdenarBurbuja;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtCodigo;

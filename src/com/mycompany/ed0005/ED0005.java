@@ -12,6 +12,9 @@ class ED0005 {
         l.agregar(new Nodo(5, null));
         l.agregar(new Nodo(7, null));
         l.agregar(new Nodo(9, null));
+        l.agregar(new Nodo(90, null));
+        l.agregar(new Nodo(91, null));
+        l.agregar(new Nodo(9233, null));
         l.leer();
         //OEEE WAAAAAAAAAAA
     }
